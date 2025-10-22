@@ -1,0 +1,225 @@
+/* ==== CONTENEDOR GENERAL ==== */
+.container {
+  padding: 25px;
+  background-color: #f5f8fc;
+}
+
+.container h2 {
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ==== ESTRUCTURA PRINCIPAL ==== */
+.cliente-container {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ==== SECCIÓN DE INFORMES ==== */
+.formulario {
+  flex: 2;
+  min-width: 450px;
+}
+
+/* ==== TABLA DE INFORMES ==== */
+.tabla-informes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 15px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.tabla-informes thead {
+  background: linear-gradient(90deg, #0072ff, #00c6ff);
+  color: white;
+}
+
+.tabla-informes th,
+.tabla-informes td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.tabla-informes th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.tabla-informes tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.tabla-informes tr:hover {
+  background-color: #eef5ff;
+  transition: background 0.3s ease;
+}
+
+/* ==== BOTONES DE ACCIÓN ==== */
+.tabla-informes button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.3s ease;
+  margin-right: 5px;
+}
+
+.tabla-informes button.ver {
+  background-color: #17a2b8;
+}
+
+.tabla-informes button.ver:hover {
+  background-color: #138496;
+}
+
+.tabla-informes button.descargar {
+  background-color: #28a745;
+}
+
+.tabla-informes button.descargar:hover {
+  background-color: #1e7e34;
+}
+
+/* ==== PANEL DE DATOS DEL CLIENTE ==== */
+.datos-registrados {
+  flex: 1;
+  min-width: 280px;
+}
+
+.card-datos {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-datos:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card-datos .icon {
+  font-size: 42px;
+  color: #27ae60;
+  margin-bottom: 10px;
+}
+
+.card-datos h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.card-datos h4 {
+  color: #2c3e50;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.card-datos hr {
+  border: none;
+  height: 2px;
+  background-color: #27ae60;
+  width: 70%;
+  margin: 10px auto;
+}
+
+.card-datos p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.card-datos strong {
+  color: #111;
+}
+
+/* ==== MODAL GENERAL ==== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 650px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.modal-buttons button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+#modal-confirm {
+  background-color: #007bff;
+}
+
+#modal-confirm:hover {
+  background-color: #005dc1;
+}
+
+#modal-cancel {
+  background-color: #888;
+}
+
+#modal-cancel:hover {
+  background-color: #555;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 850px) {
+  .cliente-container {
+    flex-direction: column;
+  }
+
+  .formulario,
+  .datos-registrados {
+    width: 100%;
+  }
+
+  .tabla-informes th,
+  .tabla-informes td {
+    font-size: 13px;
+  }
+
+  .card-datos {
+    margin-top: 20px;
+  }
+}
+
