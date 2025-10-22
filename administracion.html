@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagesst | Administración</title>
+  <link rel="stylesheet" href="style/navbar.css" />
+  <link rel="stylesheet" href="style/administracion.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación de Citas</span></a></li>
+      <li class="active"><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <div class="main-content">
+    <nav class="navbar">
+      <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+        <h2>Sagesst | Administración</h2>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons" id="search-btn">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <main class="container admin-container">
+
+  <!-- Panel de Métricas Rápidas -->
+<section class="metricas-panel">
+  <div class="metric-card azul">
+    <span class="material-icons">calendar_month</span>
+    <div>
+      <h3>Atenciones del Mes</h3>
+      <p id="total-atenciones">0</p>
+    </div>
+  </div>
+
+  <div class="metric-card verde">
+    <span class="material-icons">event_available</span>
+    <div>
+      <h3>Citas</h3>
+      <p id="total-citas">0</p>
+    </div>
+  </div>
+
+  <div class="metric-card naranja">
+    <span class="material-icons">description</span>
+    <div>
+      <h3>Informes</h3>
+      <p id="total-informes">0</p>
+    </div>
+  </div>
+
+  <div class="metric-card violeta">
+    <span class="material-icons">attach_file</span>
+    <div>
+      <h3>Archivos</h3>
+      <p id="total-archivos">0</p>
+    </div>
+  </div>
+</section>
+
+  <!-- Submenú de navegación -->
+  <div class="sub-menu">
+    <button class="sub-btn active" data-section="resumen">Resumen</button>
+    <button class="sub-btn" data-section="citas">Citas</button>
+    <button class="sub-btn" data-section="cancelaciones">Cancelaciones</button>
+    <button class="sub-btn" data-section="informes">Informes</button>
+    <button class="sub-btn" data-section="archivos">Archivos</button>
+  </div>
+
+  <!-- Secciones dinámicas -->
+<div class="sub-section" id="resumen">
+  <div class="resumen-card">
+    <h2>Resumen del Cliente</h2>
+    <div id="cliente-card">
+      <p>Selecciona un cliente activo para ver su información.</p>
+    </div>
+  </div>
+</div>
+
+<div class="sub-section" id="citas">
+  <h2>Citas</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Profesional</th>
+          <th>Servicio</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody id="citas">
+        <tr><td colspan="4">Cargando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sub-section" id="cancelaciones">
+  <h2>Cancelaciones</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Profesional</th>
+          <th>Motivo</th>
+          <th>Servicio</th>
+        </tr>
+      </thead>
+      <tbody id="cancelaciones">
+        <tr><td colspan="4">Cargando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sub-section" id="informes">
+  <h2>Informes</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Servicio</th>
+          <th>Fecha</th>
+          <th>Urgencia</th>
+          <th>Responsable</th>
+        </tr>
+      </thead>
+      <tbody id="informes">
+        <tr><td colspan="5">Cargando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="sub-section" id="archivos">
+  <h2>Archivos</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Descripción</th>
+          <th>Empleado</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="archivos">
+        <tr><td colspan="4">Cargando...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+  <!-- MODAL GENÉRICO -->
+  <div id="modal-general" class="modal-overlay">
+    <div class="modal-box">
+      <h2 id="modal-title">Título del modal</h2>
+      <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+      <div id="modal-search" class="modal-content-scroll" style="display:none;">
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+          <button id="search-btn" class="select-btn">Buscar</button>
+        </div>
+        <table id="search-results">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>NIT</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="modal-buttons" id="modal-buttons-global">
+        <button id="modal-confirm-global">Aceptar</button>
+        <button id="modal-cancel-global">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/confirebase.js"></script>
+  <script type="module" src="js/administracion.js"></script>
+</body>
+</html>
+
+
+
+

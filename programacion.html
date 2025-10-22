@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sagesst | Programación de Citas</title>
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="style/navbar.css">
+  <link rel="stylesheet" href="style/programacion.css">
+
+  <!-- Iconos de Google -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 🧭 SIDEBAR PRINCIPAL -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.html"><span class="material-icons">home</span><span>Inicio</span></a></li>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li class="active"><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación</span></a></li>
+      <li class="active"><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- 🧱 CONTENEDOR PRINCIPAL -->
+  <div class="main-content">
+    
+    <!-- 🔹 NAVBAR -->
+    <nav class="navbar">
+      <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+        <h2>Sagesst | Programación de Citas</h2>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <!-- 🗓️ NUEVO CONTENIDO PRINCIPAL: AGENDA MODERNA -->
+    <main class="container">
+
+      <!-- Controles superiores -->
+      <section class="controls" style="display:flex; gap:12px; align-items:center; margin-bottom:16px;">
+        <!-- Selector de profesional (se puede poblar desde JS) -->
+        <div class="control-item">
+          <label for="select-profesional" style="font-weight:600; display:block; margin-bottom:6px;">Profesional</label>
+          <select id="select-profesional" style="padding:8px 10px; border-radius:8px; border:1px solid #cfd8dc; min-width:220px;">
+            <option value="">— Selecciona profesional —</option>
+            <!-- opciones añadidas por JS -->
+          </select>
+        </div>
+
+        <!-- Selector de fecha -->
+        <div class="control-item">
+          <label for="fecha-inicio" style="font-weight:600; display:block; margin-bottom:6px;">Fecha</label>
+          <input type="date" id="fecha-inicio" style="padding:8px 10px; border-radius:8px; border:1px solid #cfd8dc;">
+        </div>
+
+        <!-- Botón nueva cita -->
+        <div style="margin-left:auto; display:flex; gap:8px;">
+          <button id="btn-fecha-actual" class="btn-secundario" title="Ir a hoy">Hoy</button>
+          <button id="btn-nueva-cita" class="btn-primario" title="Registrar nueva cita">+ Nueva cita</button>
+        </div>
+      </section>
+
+      <!-- Layout principal: agenda + detalles -->
+      <section style="display:grid; grid-template-columns: 1fr 320px; gap:18px; align-items:start;">
+        
+        <!-- AGENDA (día único, por horas) -->
+        <div>
+          <div style="margin-bottom:8px; font-weight:600; color:#333;">Agenda del día: <span id="display-fecha" style="font-weight:700;"></span></div>
+
+          <div class="agenda-wrapper" style="background:#fff; border-radius:12px; padding:12px; box-shadow:0 6px 18px rgba(0,0,0,0.05);">
+            <table class="agenda" style="width:100%; border-collapse:collapse; table-layout:fixed;">
+              <thead>
+                <tr>
+                  <th style="width:110px; text-align:left; padding:10px; font-weight:700;">Hora</th>
+                  <th style="text-align:left; padding:10px; font-weight:700;">Cita</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Filas horarias (serán generadas por JS) -->
+                <!-- Ejemplo: <tr data-hora="08:00"><th>8:00</th><td data-time="08:00"></td></tr> -->
+              </tbody>
+            </table>
+            <p style="margin-top:10px; font-size:13px; color:#666;">Haz clic en una hora libre para registrar una nueva cita. Haz clic en una cita existente para ver/editar.</p>
+          </div>
+        </div>
+
+        <!-- PANEL DERECHO: detalle y lista rápidas -->
+        <aside style="position:relative;">
+          <div style="background:#fff; border-radius:12px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,0.05);">
+            <h3 style="margin:0 0 8px 0;">Detalles rápidos</h3>
+
+            <div style="margin-bottom:12px;">
+              <div style="font-size:13px; color:#666;">Profesional seleccionado</div>
+              <div id="quick-profesional" style="font-weight:700; margin-top:6px;">—</div>
+            </div>
+
+            <div style="margin-bottom:12px;">
+              <div style="font-size:13px; color:#666;">Cliente activo</div>
+              <div id="quick-cliente" style="font-weight:700; margin-top:6px;">—</div>
+            </div>
+
+            <div style="margin-top:8px;">
+              <button id="btn-ver-agenda-semanal" class="btn-terciario" style="width:100%;">Ver semana</button>
+            </div>
+          </div>
+
+          <!-- Lista de próximos 5 turnos (rápido) -->
+          <div style="margin-top:12px; background:#fff; border-radius:12px; padding:12px; box-shadow:0 6px 18px rgba(0,0,0,0.05);">
+            <h4 style="margin:0 0 8px 0;">Próximas citas</h4>
+            <ul id="list-proximas" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+              <!-- items añadidos por JS -->
+              <li style="color:#666;">No hay próximas citas</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Opcional: sidebar lateral para elegir profesional (mantengo por compatibilidad con tu código) -->
+      <aside class="sidebar-lateral" aria-hidden="true">
+        <h3>Selecciona un Profesional</h3>
+        <ul id="lista-profesionales">
+          <li>Paul Sosa</li>
+          <li>Ricardo Pérez</li>
+          <li>Laura Gómez</li>
+          <!-- más profesionales -->
+        </ul>
+      </aside>
+
+    </main>
+  </div>
+
+  <!-- ========================
+       MODAL: NUEVA CITA
+       ======================== -->
+  <div id="modal-nueva" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <h2>Registrar Cita</h2>
+      <form id="form-nueva-cita">
+        <label>Cliente</label>
+        <input type="text" id="nueva-cliente" placeholder="Nombre del cliente..." required>
+
+        <label>Servicio</label>
+        <select id="nueva-servicio" required>
+          <option value="">Selecciona un servicio</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Finanzas">Finanzas</option>
+          <option value="Préstamo">Préstamo</option>
+        </select>
+
+        <label>Hora</label>
+        <input type="time" id="nueva-hora" required>
+
+        <label>Notas (opcional)</label>
+        <textarea id="nueva-notas" placeholder="Observaciones..." rows="3"></textarea>
+
+        <div class="modal-buttons" style="margin-top:14px;">
+          <button type="submit" class="registrar">Guardar</button>
+          <button type="button" id="modal-nueva-close">Cerrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================
+       MODAL: DETALLE CITA
+       ======================== -->
+  <div id="modal-detalle" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <h2>Detalle de la cita</h2>
+      <div id="detalle-contenido" style="margin-bottom:10px;">
+        <!-- rellenado por JS -->
+        <p><strong>Cliente:</strong> <span id="det-cliente">-</span></p>
+        <p><strong>Servicio:</strong> <span id="det-servicio">-</span></p>
+        <p><strong>Fecha / Hora:</strong> <span id="det-fecha-hora">-</span></p>
+        <p><strong>Profesional:</strong> <span id="det-profesional">-</span></p>
+        <p><strong>Estado:</strong> <span id="det-estado">-</span></p>
+      </div>
+
+      <div id="div-cancelar-detalle" style="display:none; margin-bottom:10px;">
+        <label>Motivo de cancelación:</label>
+        <textarea id="motivo-cancel-detalle" placeholder="Motivo..." rows="3"></textarea>
+        <button id="btn-confirm-cancel-detalle" class="btn-primario" style="margin-top:8px;">Confirmar cancelación</button>
+      </div>
+
+      <div class="modal-buttons">
+        <button id="btn-marcar-asistio" class="btn-primario">Marcar como asistió</button>
+        <button id="btn-abrir-cancel" class="btn-secundario">Cancelar cita</button>
+        <button id="modal-detalle-close" class="btn-terciario">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GENÉRICO -->
+<div id="modal-general" class="modal-overlay">
+  <div class="modal-box">
+    <h2 id="modal-title">Título del modal</h2>
+    
+    <!-- Mensaje normal para confirmaciones -->
+    <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+    <!-- Contenedor de búsqueda (por defecto oculto) -->
+    <div id="modal-search" class="modal-content-scroll" style="display:none;">
+      <div style="display:flex; gap:8px; margin-bottom:10px;">
+        <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+        <button id="search-btn" class="select-btn">Buscar</button>
+      </div>
+      <table id="search-results">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Botones únicos del modal -->
+    <div class="modal-buttons" id="modal-buttons-global"> 
+      <button id="modal-confirm-global">Aceptar</button>
+      <button id="modal-cancel-global">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ======================== -->
+  <!-- 🔧 SCRIPTS -->
+  <!-- ======================== -->
+  <script type="module" src="js/navbar.js" defer></script>
+  <script type="module" src="js/confirebase.js" defer></script>
+  <!-- NOTA: luego te proporcionaré el nuevo js/programacion.js compatible con este HTML -->
+  <script type="module" src="js/programacion.js" defer></script>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagesst | Configuración</title>
+  <link rel="stylesheet" href="style/navbar.css">
+  <link rel="stylesheet" href="style/configuracion.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.html"><span class="material-icons">home</span><span>Inicio</span></a></li>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación</span></a></li>
+      <li class="active"><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li class="active"><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  
+  <!-- Contenedor principal -->
+  <div class="main-content">
+
+    <!-- Navbar superior -->
+    <nav class="navbar">
+      <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+        <h2>Sagesst | Inicio</h2>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <main class="container">
+
+      <!-- ================= PROFESIONALES ================= -->
+      <section class="config-section">
+        <h3><span class="material-icons">groups</span> Gestión de Profesionales</h3>
+        <button id="btn-agregar-profesional" class="btn-primary">+ Agregar Profesional</button>
+        <ul id="lista-profesionales" class="lista-profesionales"></ul>
+      </section>
+
+      <!-- ================= BLOQUEOS ================= -->
+      <section class="config-section">
+        <h3><span class="material-icons">schedule</span> Bloqueo de Horarios</h3>
+        <div class="bloqueo-form">
+          <select id="bloq-profesional">
+            <option value="">Seleccionar profesional</option>
+          </select>
+          <input type="date" id="bloq-fecha">
+          <input type="time" id="bloq-hora">
+          <button id="btn-bloquear" class="btn-danger">Bloquear</button>
+        </div>
+      </section>
+
+      <!-- ================= EMPLEADOS ================= -->
+      <section class="config-section">
+        <h3><span class="material-icons">badge</span> Gestión de Empleados</h3>
+        <button id="btn-agregar-empleado" class="btn-primary">+ Crear Usuario</button>
+
+        <table class="tabla-permisos">
+          <thead>
+            <tr>
+              <th>Empleado</th>
+              <th>Clientes</th>
+              <th>Informes</th>
+              <th>Programación</th>
+              <th>Facturación</th>
+              <th>Adjuntos</th>
+              <th>Gestión Clientes</th>
+              <th>Configuración</th>
+              <th>Crear Usuarios</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-permisos-body">
+            <!-- Se llenará dinámicamente desde Firebase -->
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ============ MODAL: AGREGAR PROFESIONAL ============ -->
+<div id="modal-profesional" class="modal-overlay-config">
+  <div class="modal-box-config">
+    <h2>Agregar Profesional</h2>
+    <form id="form-profesional">
+      <label>Nombre del profesional</label>
+      <input type="text" id="nombre-profesional" required>
+      <div class="botones-config">
+        <button type="submit" class="registrar-config">Guardar</button>
+        <button type="button" id="modal-profesional-close" class="cancelar-config">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL: CREAR EMPLEADO (USUARIO) ============ -->
+<div id="modal-empleado" class="modal-overlay-config">
+  <div class="modal-box-config">
+    <h2>Crear Usuario (Empleado)</h2>
+    <form id="form-empleado">
+      <label>Nombre del empleado</label>
+      <input type="text" id="nombre-empleado" required>
+
+      <label>Contraseña</label>
+      <input type="password" id="contrasena-empleado" required>
+
+      <h4>Permisos iniciales</h4>
+      <div class="permisos-form-config">
+        <label><input type="checkbox" id="perm-clientes"> Clientes</label>
+        <label><input type="checkbox" id="perm-informes"> Informes</label>
+        <label><input type="checkbox" id="perm-programacion"> Programación</label>
+        <label><input type="checkbox" id="perm-facturacion"> Facturación</label>
+        <label><input type="checkbox" id="perm-adjuntos"> Adjuntos</label>
+        <label><input type="checkbox" id="perm-gestion-clientes"> Gestión de Clientes</label>
+        <label><input type="checkbox" id="perm-configuracion"> Configuración</label>
+        <label><input type="checkbox" id="perm-crearUsuarios"> Crear Usuarios</label>
+      </div>
+
+      <div class="botones-config">
+        <button type="submit" class="registrar-config">Guardar</button>
+        <button type="button" id="modal-empleado-close" class="cancelar-config">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL GENÉRICO -->
+<div id="modal-general" class="modal-overlay">
+  <div class="modal-box">
+    <h2 id="modal-title">Título del modal</h2>
+    
+    <!-- Mensaje normal para confirmaciones -->
+    <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+    <!-- Contenedor de búsqueda (por defecto oculto) -->
+    <div id="modal-search" class="modal-content-scroll" style="display:none;">
+      <div style="display:flex; gap:8px; margin-bottom:10px;">
+        <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+        <button id="search-btn" class="select-btn">Buscar</button>
+      </div>
+      <table id="search-results">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Botones únicos del modal -->
+    <div class="modal-buttons" id="modal-buttons-global"> 
+      <button id="modal-confirm-global">Aceptar</button>
+      <button id="modal-cancel-global">Cancelar</button>
+    </div>
+  </div>
+</div>
+  
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/confirebase.js"></script>
+  <script type="module" src="js/configuracion.js"></script>
+</body>
+</html>
+

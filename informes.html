@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagesst | Informes</title>
+  <link rel="stylesheet" href="style/navbar.css" />
+  <link rel="stylesheet" href="style/informes.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.html"><span class="material-icons">home</span><span>Inicio</span></a></li>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación de Citas</span></a></li>
+      <li class="active"><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <nav class="navbar">
+      <div class="nav-left menu-toggle">
+        <span class="material-icons">menu</span>
+        <h1>Sagesst | Informes</h1>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h2>Informes y Adjuntos del Cliente</h2>
+      <div class="cliente-container">
+        
+        <!-- 🔹 Tabla dinámica (rellenada desde JS) -->
+        <div class="formulario">
+          <table class="tabla-informes">
+            <thead>
+              <tr>
+                <th>Nombre del Archivo</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4">Esperando cliente activo...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 🔹 Card del cliente (rellenado desde JS) -->
+        <div class="datos-registrados">
+          <div class="card-datos">
+          <div class="icon-container">
+          <span class="material-icons icon">apartment</span>
+           <span class="estado-texto">Activo</span>
+           </div>
+            <h3>Datos Registrados</h3>
+            <hr>
+            <p>Selecciona un cliente activo para ver la información.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GENÉRICO -->
+<div id="modal-general" class="modal-overlay">
+  <div class="modal-box">
+    <h2 id="modal-title">Título del modal</h2>
+    
+    <!-- Mensaje normal para confirmaciones -->
+    <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+    <!-- Contenedor de búsqueda (por defecto oculto) -->
+    <div id="modal-search" class="modal-content-scroll" style="display:none;">
+      <div style="display:flex; gap:8px; margin-bottom:10px;">
+        <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+        <button id="search-btn" class="select-btn">Buscar</button>
+      </div>
+      <table id="search-results">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Botones únicos del modal -->
+    <div class="modal-buttons" id="modal-buttons-global"> 
+      <button id="modal-confirm-global">Aceptar</button>
+      <button id="modal-cancel-global">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/confirebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script type="module" src="js/informes.js"></script>
+</body>
+</html>
+
+

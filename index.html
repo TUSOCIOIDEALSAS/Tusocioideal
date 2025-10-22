@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu Socio Ideal | Inicio</title>
+  <link rel="stylesheet" href="style/navbar.css" />
+  <link rel="stylesheet" href="style/index.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body class="inicio-page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación de Citas</span></a></li>
+      <li><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <div class="main-content">
+
+    <!-- Navbar superior -->
+    <nav class="navbar">
+      <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+        <h2>Tu Socio Ideal | Inicio</h2>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <!-- Panel principal -->
+    <main class="container">
+
+      <!-- CARD GRANDE DE BIENVENIDA -->
+      <section class="welcome-card">
+        <div class="welcome-content">
+          <h2>Bienvenido, Kevin 👋</h2>
+          <p>Este es tu panel principal de <strong>Tu Socio Ideal</strong>. Aquí puedes visualizar el resumen general de la operación diaria.</p>
+        </div>
+        <span class="material-icons big-icon">insights</span>
+      </section>
+
+      <!-- CARDS DE INDICADORES -->
+      <div class="cards">
+        <div class="card">
+          <span class="material-icons icon">event</span>
+          <p>Citas de Hoy</p>
+          <h3>0</h3>
+        </div>
+        <div class="card">
+          <span class="material-icons icon">cancel</span>
+          <p>Cancelaciones</p>
+          <h3>0</h3>
+        </div>
+        <div class="card">
+          <span class="material-icons icon">person</span>
+          <p>Clientes Registrados</p>
+          <h3>0</h3>
+        </div>
+        <div class="card">
+          <span class="material-icons icon">groups</span>
+          <p>Usuarios</p>
+          <h3>0</h3>
+        </div>
+      </div>
+
+      <!-- GRÁFICAS -->
+      <section class="chart-section">
+        <h3>Estadísticas Generales</h3>
+        <div class="charts-grid">
+          <div class="chart-box">
+            <h4>Clientes Ingresados</h4>
+            <canvas id="chartClientes"></canvas>
+          </div>
+          <div class="chart-box">
+            <h4>Cancelaciones</h4>
+            <canvas id="chartCancelaciones"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2025 Tu Socio Ideal</footer>
+  </div>
+
+  <!-- MODAL GENÉRICO (global) -->
+  <div id="modal-general" class="modal-overlay">
+    <div class="modal-box">
+      <h2 id="modal-title">Título del modal</h2>
+      <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+      <div id="modal-search" class="modal-content-scroll" style="display:none;">
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+          <button id="search-btn" class="select-btn">Buscar</button>
+        </div>
+        <table id="search-results">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>NIT</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="modal-buttons" id="modal-buttons-global">
+        <button id="modal-confirm-global">Aceptar</button>
+        <button id="modal-cancel-global">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/confirebase.js"></script>
+  <script type="module" src="js/index.js"></script>
+</body>
+</html>
+
+

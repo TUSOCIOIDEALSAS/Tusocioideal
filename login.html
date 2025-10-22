@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagesst | Iniciar sesión</title>
+  <link rel="stylesheet" href="style/login.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Fondo dinámico -->
+  <div class="background">
+    <img src="img/imagen-1.jpg" alt="Fondo 1" class="bg-image active">
+    <img src="img/imagen-2.jpg" alt="Fondo 2" class="bg-image">
+  </div>
+
+  <!-- Contenedor principal -->
+  <div class="login-container">
+    <div class="login-box">
+      <h1 class="titulo">TU SOCIO IDEAL</h1>
+      <p class="subtitulo">Inicia sesión para continuar</p>
+
+      <form id="login-form" class="form-login">
+        <div class="input-group">
+          <span class="material-icons">person</span>
+          <input type="text" id="usuario" placeholder="Ingresa tu usuario" required>
+        </div>
+
+        <div class="input-group">
+          <span class="material-icons">lock</span>
+          <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+        </div>
+
+        <button type="submit" class="btn-ingresar">Iniciar sesión</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de error -->
+  <div class="modal-overlay" id="modal-error">
+    <div class="modal-box">
+      <h2>Error</h2>
+      <p id="error-text"></p>
+      <button id="cerrar-error">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/confirebase.js"></script>
+  <script type="module" src="js/login.js"></script>
+
+  <!-- Script para el cambio de imágenes -->
+  <script>
+    const images = document.querySelectorAll('.bg-image');
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 7000); // cambia cada 7 segundos
+  </script>
+</body>
+</html>
+

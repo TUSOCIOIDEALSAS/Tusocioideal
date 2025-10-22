@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagesst | Gestión de Clientes</title>
+  <link rel="stylesheet" href="style/navbar.css">
+  <link rel="stylesheet" href="style/gestion_clientes.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.html"><span class="material-icons">home</span><span>Inicio</span></a></li>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li class="active"><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación de Citas</span></a></li>
+      <li class="active"><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <div class="main-content">
+    <nav class="navbar">
+      <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+        <h2>Sagesst | Gestión de Clientes</h2>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons" id="btn-buscar-cliente">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="container">
+      
+      <!-- Cliente seleccionado -->
+      <section class="cliente-activo">
+        <h3>Cliente: <span id="nombre-cliente">Copytrol</span></h3>
+        <p>Código: <span id="codigo-cliente">CL-0001</span> | NIT: <span id="nit-cliente">901722045</span></p>
+      </section>
+
+      <!-- Gestión de informes -->
+      <section class="gestion-container">
+
+        <!-- Formulario de informe -->
+        <div class="formulario">
+          <h3>Informe del Cliente</h3>
+          <form id="form-informe">
+            
+            <div class="fila">
+              <div>
+                <label for="servicio">Servicio</label>
+                <select id="servicio" required>
+                  <option value="">Seleccione un servicio</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Finanzas">Finanzas</option>
+                  <option value="Contabilidad">Contabilidad</option>
+                </select>
+              </div>
+              <div>
+                <label for="urgencia">Urgencia</label>
+                <select id="urgencia" required>
+                  <option value="Normal">Normal</option>
+                  <option value="Media">Media</option>
+                  <option value="Alta">Alta</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="fila">
+              <div>
+                <label for="responsable">Responsable</label>
+                <input id="responsable" type="text" placeholder="Ej: Paul Sosa" required>
+              </div>
+              <div>
+                <label for="fecha">Fecha</label>
+                <input id="fecha" type="date" required>
+              </div>
+            </div>
+
+            <div class="fila">
+              <label for="informe">Descripción del Informe</label>
+              <textarea id="informe" placeholder="Escribe aquí los detalles del informe..." required></textarea>
+            </div>
+
+            <div class="botones">
+              <button type="submit" class="registrar">💾 Guardar Informe</button>
+            </div>
+          </form>
+        </div>
+
+      </section>
+
+      <!-- Tabla de historial de informes -->
+      <section class="tabla-informes-container">
+        <h3>Historial de Informes</h3>
+        <table class="tabla-informes">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Servicio</th>
+              <th>Urgencia</th>
+              <th>Responsable</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-informes-body">
+            <tr><td colspan="5">Cargando informes...</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- MODAL GENÉRICO -->
+<div id="modal-general" class="modal-overlay">
+  <div class="modal-box">
+    <h2 id="modal-title">Título del modal</h2>
+    
+    <!-- Mensaje normal para confirmaciones -->
+    <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+    <!-- Contenedor de búsqueda (por defecto oculto) -->
+    <div id="modal-search" class="modal-content-scroll" style="display:none;">
+      <div style="display:flex; gap:8px; margin-bottom:10px;">
+        <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+        <button id="search-btn" class="select-btn">Buscar</button>
+      </div>
+      <table id="search-results">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Botones únicos del modal -->
+    <div class="modal-buttons" id="modal-buttons-global"> 
+      <button id="modal-confirm-global">Aceptar</button>
+      <button id="modal-cancel-global">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/confirebase.js"></script>
+  <script type="module" src="js/gestion_clientes.js"></script>
+
+</body>
+</html>
+
+

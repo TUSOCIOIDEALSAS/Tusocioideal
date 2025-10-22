@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sagesst | Adjuntos</title>
+  <link rel="stylesheet" href="style/navbar.css" />
+  <link rel="stylesheet" href="style/adjuntos.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.html"><span class="material-icons">home</span><span>Inicio</span></a></li>
+      <li><a href="clientes.html"><span class="material-icons">person</span><span>Clientes</span></a></li>
+      <li><a href="informes.html"><span class="material-icons">description</span><span>Informes</span></a></li>
+      <li><a href="adjuntos.html" class="active"><span class="material-icons">attach_file</span><span>Adjuntos</span></a></li>
+      <li><a href="facturacion.html"><span class="material-icons">receipt_long</span><span>Facturación</span></a></li>
+      <li><a href="gestion_clientes.html"><span class="material-icons">groups</span><span>Gestión de Clientes</span></a></li>
+      <li><a href="programacion.html"><span class="material-icons">calendar_month</span><span>Programación de Citas</span></a></li>
+      <li><a href="administracion.html"><span class="material-icons">manage_accounts</span><span>Administración</span></a></li>
+      <li><a href="configuracion.html"><span class="material-icons">settings</span><span>Configuración</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Contenedor principal -->
+  <div class="main-content">
+    <!-- Barra superior -->
+    <nav class="navbar">
+      <div class="nav-left menu-toggle">
+        <span class="material-icons">menu</span>
+        <h1>Sagesst | Adjuntos</h1>
+      </div>
+      <div class="nav-right">
+        <span class="material-icons">search</span>
+        <span class="material-icons">attach_file</span>
+        <span class="material-icons">home</span>
+        <div class="user-circle">KS</div>
+      </div>
+    </nav>
+
+    <!-- Contenido -->
+    <main class="container">
+      <h2>Adjuntar Archivos al Cliente</h2>
+
+      <div class="adjuntos-container">
+
+        <!-- Panel izquierdo (Datos del cliente) -->
+        <section class="datos-registrados">
+          <div class="card-datos">
+            <div class="card-header">
+              <span class="material-icons icon">apartment</span>
+              <div class="estado">ACTIVO</div>
+            </div>
+            <h3>Datos del Cliente</h3>
+            <hr>
+            <h4 id="cliente-nombre">Copytrol</h4>
+            <p><strong>Código:</strong> <span id="cliente-codigo">CL-0001</span></p>
+            <p><strong>NIT:</strong> <span id="cliente-nit">901722045</span></p>
+            <p><strong>Contacto:</strong> <span id="cliente-contacto">PABLO DAVID PÉREZ RUIZ</span></p>
+            <p><strong>Correo:</strong> <span id="cliente-correo">saulcastro@gmail.com</span></p>
+            <p><strong>Teléfono:</strong> <span id="cliente-telefono">3122575674</span></p>
+            <p><strong>Dirección:</strong> <span id="cliente-direccion">CR 4 628 48</span></p>
+            <p><strong>Ingreso:</strong> <span id="cliente-ingreso">2025-09-17</span></p>
+          </div>
+        </section>
+
+        <!-- Panel derecho (Formulario + Tabla) -->
+        <section class="panel-derecho">
+
+          <!-- Formulario -->
+          <div class="formulario">
+            <form id="formAdjunto">
+              
+              <div class="fila">
+                <div>
+                  <label for="descripcionArchivo">Descripción</label>
+                  <input type="text" id="descripcionArchivo" placeholder="Ej: Informe Psicológico" required>
+                </div>
+              </div>
+
+              <div class="fila">
+                <div>
+                  <label for="empleadoArchivo">Empleado que registra</label>
+                  <input type="text" id="empleadoArchivo" placeholder="Ej: Kevin Sosa" readonly>
+                </div>
+                <div>
+                  <label for="archivoAdjunto">Seleccionar archivo</label>
+                  <input type="file" id="archivoAdjunto" accept=".pdf,.doc,.docx,.jpg,.png" required>
+                </div>
+              </div>
+
+              <div class="botones">
+                <button type="submit" class="subir">
+                <span class="material-icons">cloud_upload</span> Guardar Registro
+                </button>
+                <div class="loader" id="loader"></div>
+                <button type="button" id="btnLimpiar" class="limpiar">
+                  <span class="material-icons">clear_all</span> Limpiar
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Tabla -->
+          <div class="tabla-wrapper">
+            <h3>Registros del Cliente</h3>
+            <table class="tabla-archivos">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Descripción</th>
+                  <th>Empleado</th>
+                  <th>Fecha</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="lista-archivos">
+                <!-- filas dinámicas -->
+              </tbody>
+            </table>
+          </div>
+
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL GENÉRICO -->
+  <div id="modal-general" class="modal-overlay">
+    <div class="modal-box">
+      <h2 id="modal-title">Título del modal</h2>
+      <p id="modal-message">Aquí va el mensaje del modal...</p>
+
+      <div id="modal-search" class="modal-content-scroll" style="display:none;">
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <input type="text" id="search-input" placeholder="Buscar cliente por nombre o NIT..." />
+          <button id="search-btn" class="select-btn">Buscar</button>
+        </div>
+        <table id="search-results">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>NIT</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="modal-buttons" id="modal-buttons-global">
+        <button id="modal-confirm-global">Aceptar</button>
+        <button id="modal-cancel-global">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/confirebase.js"></script>
+  <script type="module" src="js/adjuntos.js"></script>
+</body>
+</html>
+
+
+
+
+
+
