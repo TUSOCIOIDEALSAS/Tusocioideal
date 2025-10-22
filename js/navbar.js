@@ -24,6 +24,14 @@ const routes = {
 
 // Esperar a que cargue el DOM
 document.addEventListener("DOMContentLoaded", async () => {
+// ✅ Verificar si hay sesión activa antes de cargar el resto del contenido
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+if (!usuarioActivo) {
+  console.warn("⚠️ No hay sesión activa, redirigiendo al login...");
+  window.location.href = "login.html";
+}
+
   /* ------------------------------------
    * 🟦 Sidebar Toggle
    * ------------------------------------ */
@@ -261,7 +269,9 @@ if (userCircle) {
   });
 }
 
+  const userNameSpan = document.querySelector("#user-name");
   if (userNameSpan) userNameSpan.textContent = usuarioActivo.nombre;
+
 
   // Obtener permisos del usuario
   try {
@@ -350,4 +360,6 @@ if (userCircle) {
   }
 
 }); // 👈 CIERRE FINAL DEL EVENTO "DOMContentLoaded"
+
+
 
