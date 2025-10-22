@@ -1,0 +1,254 @@
+/* ==== CONTENEDOR PRINCIPAL ==== */
+.container {
+  padding: 25px;
+  background-color: #f5f8fc;
+  transition: margin-left 0.3s ease;
+}
+
+.container h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* ==== CLIENTE ACTIVO ==== */
+.cliente-activo {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+.cliente-activo h3 {
+  font-size: 18px;
+  color: #0072ff;
+  margin-bottom: 6px;
+}
+
+.cliente-activo p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* ==== FORMULARIO DE FACTURA ==== */
+.formulario-factura {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+.formulario-factura h2 {
+  color: #222;
+  margin-bottom: 15px;
+}
+
+.fila {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.fila div {
+  flex: 1;
+  min-width: 220px;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input, select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f9fbfc;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+/* ==== BOTONES ==== */
+.botones {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+button {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+button.registrar {
+  background-color: #2ecc71;
+}
+
+button.registrar:hover {
+  background-color: #27ae60;
+}
+
+/* ==== FILTROS ==== */
+.filtros-tabla {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filtros-tabla label {
+  font-size: 14px;
+  color: #333;
+}
+
+.filtros-tabla input {
+  margin-left: 6px;
+}
+
+/* ==== TABLA DE FACTURAS ==== */
+.tabla-facturas {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.tabla-facturas h2 {
+  margin-bottom: 15px;
+  color: #222;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 12px 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+table th {
+  background-color: #0072ff;
+  color: white;
+  border-radius: 6px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f4f6fc;
+}
+
+table tr:hover {
+  background-color: #e0e7ff;
+  cursor: pointer;
+}
+
+/* ==== MODAL DE ACCIONES ==== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+.modal-box {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  width: 360px;
+  text-align: center;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-box h2 {
+  font-size: 18px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.modal-buttons button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#modal-editar {
+  background-color: #0072ff;
+  color: #fff;
+}
+
+#modal-editar:hover {
+  background-color: #005fd4;
+}
+
+#modal-eliminar {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+#modal-eliminar:hover {
+  background-color: #c0392b;
+}
+
+#modal-cerrar {
+  background-color: #ccc;
+  color: #333;
+}
+
+#modal-cerrar:hover {
+  background-color: #b3b3b3;
+}
+
+/* ==== RESPONSIVO ==== */
+@media (max-width: 900px) {
+  .fila, .filtros-tabla {
+    flex-direction: column;
+  }
+}
+

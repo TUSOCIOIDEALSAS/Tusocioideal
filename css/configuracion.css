@@ -1,0 +1,310 @@
+/* ==== CONFIGURACIÓN GENERAL ==== */
+.container {
+  padding: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* ==== SECCIONES DE CONFIGURACIÓN ==== */
+.config-section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.config-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.config-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3em;
+  color: #2c3e50;
+  margin-bottom: 18px;
+}
+
+/* ==== BOTONES ==== */
+.btn-primary, .btn-danger {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #005dc1;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-eliminar {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-eliminar:hover {
+  background-color: #c0392b;
+}
+
+/* ==== LISTA DE PROFESIONALES ==== */
+.lista-profesionales {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.lista-profesionales li {
+  background: #f8f9fa;
+  padding: 12px 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.lista-profesionales li:hover {
+  background-color: #e9ecef;
+  transform: translateY(-1px);
+}
+
+/* ==== FORMULARIO BLOQUEO (oculto si no se usa) ==== */
+.bloqueo-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  opacity: 0.7;
+  pointer-events: none; /* Bloqueado visualmente */
+}
+
+.bloqueo-form select,
+.bloqueo-form input {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 0.95em;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.bloqueo-form select:focus,
+.bloqueo-form input:focus {
+  border-color: #007bff;
+}
+
+/* ==== TABLA DE PERMISOS ==== */
+.tabla-permisos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.95em;
+  table-layout: auto;
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+  border-radius: 8px;
+}
+
+.tabla-permisos thead {
+  background-color: #007bff;
+  color: white;
+}
+
+.tabla-permisos th,
+.tabla-permisos td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  min-width: 100px;
+}
+
+.tabla-permisos tr:hover {
+  background-color: #f1f1f1;
+}
+
+.tabla-permisos input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* ==== MODALES DE CONFIGURACIÓN ==== */
+.modal-overlay-config {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.modal-overlay-config.active {
+  display: flex;
+  animation: fadeInConfig 0.25s ease-in-out;
+}
+
+.modal-box-config {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  width: 380px;
+  max-width: 90%;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  animation: slideUpConfig 0.25s ease;
+}
+
+.modal-box-config h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 1.3em;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.modal-box-config form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-box-config form input,
+.modal-box-config form select {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95em;
+  transition: all 0.2s ease;
+}
+
+.modal-box-config form input:focus,
+.modal-box-config form select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* ==== BOTONES MODAL ==== */
+.botones-config {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+  gap: 10px;
+}
+
+.registrar-config {
+  flex: 1;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.registrar-config:hover {
+  background-color: #0056b3;
+}
+
+.cancelar-config {
+  flex: 1;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.cancelar-config:hover {
+  background-color: #b3b3b3;
+}
+
+/* ==== PERMISOS FORM ==== */
+.permisos-form-config {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  margin-top: 5px;
+}
+
+.permisos-form-config label {
+  font-size: 0.9em;
+  color: #444;
+}
+
+/* ==== ANIMACIONES ==== */
+@keyframes fadeInConfig {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpConfig {
+  from { transform: translateY(35px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ==== MODAL EMPLEADO AJUSTES ==== */
+#modal-empleado .modal-box-config {
+  width: 360px;
+  padding: 25px 22px;
+  border-radius: 18px;
+}
+
+#modal-empleado h2 {
+  font-size: 1.2em;
+  color: #2c3e50;
+  margin-bottom: 18px;
+}
+
+#modal-empleado .registrar-config {
+  background-color: #2ecc71;
+}
+
+#modal-empleado .registrar-config:hover {
+  background-color: #27ae60;
+}
+
+#modal-empleado .cancelar-config {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+#modal-empleado .cancelar-config:hover {
+  background-color: #c0392b;
+}
+
+
+
