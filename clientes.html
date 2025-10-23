@@ -50,206 +50,208 @@
   <form>
 
     <!-- 🧍 DATOS PERSONALES -->
-    <h3 class="subtitulo-form">Datos del Contacto</h3>
-    <div class="fila">
-      <div>
-        <label>Tipo de Documento</label>
-        <select name="tipoDocumento">
-          <option value="">Seleccionar</option>
-          <option value="CC">Cédula de Ciudadanía</option>
-          <option value="CE">Cédula de Extranjería</option>
-          <option value="NIT">NIT</option>
-          <option value="Pasaporte">Pasaporte</option>
-        </select>
-      </div>
-      <div>
-        <label>Número de Documento</label>
-        <input type="text" name="numeroDocumento" placeholder="Ej: 1054879621">
-      </div>
+  <h3 class="subtitulo-form">Datos del Contacto</h3>
+  <div class="fila">
+    <div>
+      <label>Tipo de Documento</label>
+      <select name="tipoDocumento">
+        <option value="">Seleccionar</option>
+        <option value="CC">Cédula de Ciudadanía</option>
+        <option value="CE">Cédula de Extranjería</option>
+        <option value="NIT">NIT</option>
+        <option value="Pasaporte">Pasaporte</option>
+      </select>
     </div>
-
-    <div class="fila">
-      <div>
-        <label>Primer Nombre</label>
-        <input type="text" name="primerNombre" placeholder="Ej: PABLO">
-      </div>
-      <div>
-        <label>Segundo Nombre</label>
-        <input type="text" name="segundoNombre" placeholder="Ej: DAVID">
-      </div>
+    <div>
+      <label>Número de Documento</label>
+      <input type="text" name="numeroDocumento" placeholder="Ej: 1054879621">
     </div>
+  </div>
 
-    <div class="fila">
-      <div>
-        <label>Primer Apellido</label>
-        <input type="text" name="primerApellido" placeholder="Ej: PEREZ">
-      </div>
-      <div>
-        <label>Segundo Apellido</label>
-        <input type="text" name="segundoApellido" placeholder="Ej: RUIZ">
-      </div>
+  <div class="fila">
+    <div>
+      <label>Primer Nombre</label>
+      <input type="text" name="primerNombre" placeholder="Ej: PABLO">
     </div>
-
-    <div class="fila">
-      <div>
-        <label>Cargo o Puesto en la Empresa</label>
-        <input type="text" name="cargo" placeholder="Ej: Gerente Comercial">
-      </div>
-      <div>
-        <label>Correo Personal</label>
-        <input type="email" name="correoPersonal" placeholder="Ej: ejemplo@correo.com">
-      </div>
+    <div>
+      <label>Segundo Nombre</label>
+      <input type="text" name="segundoNombre" placeholder="Ej: DAVID">
     </div>
+  </div>
 
-    <div class="fila">
-      <div>
-        <label>Teléfono Personal / Celular</label>
-        <input type="text" name="telefonoPersonal" placeholder="Ej: 3122575674">
-      </div>
+  <div class="fila">
+    <div>
+      <label>Primer Apellido</label>
+      <input type="text" name="primerApellido" placeholder="Ej: PEREZ">
     </div>
-
-    <!-- 🏢 DATOS EMPRESARIALES -->
-    <h3 class="subtitulo-form">Datos de la Empresa</h3>
-    <div class="fila">
-      <div>
-        <label>Nombre de la Empresa o Razón Social</label>
-        <input type="text" name="nombreEmpresa" placeholder="Ej: Copytrol S.A.S.">
-      </div>
-      <div>
-        <label>NIT o Número Tributario</label>
-        <input type="text" name="nit" placeholder="Ej: 901722045">
-      </div>
+    <div>
+      <label>Segundo Apellido</label>
+      <input type="text" name="segundoApellido" placeholder="Ej: RUIZ">
     </div>
+  </div>
 
-    <div class="fila">
-      <div>
-        <label>Tipo de Empresa</label>
-        <select name="tipoEmpresa">
-          <option value="">Seleccionar</option>
-          <option value="Natural">Natural</option>
-          <option value="Jurídica">Jurídica</option>
-        </select>
-      </div>
-      <div>
-        <label>Sector o Actividad Económica</label>
-        <input type="text" name="sector" placeholder="Ej: Servicios de Salud">
-      </div>
+  <div class="fila">
+    <div>
+      <label>Cargo o Puesto en la Empresa</label>
+      <input type="text" name="cargo" placeholder="Ej: Gerente Comercial">
     </div>
-
-    <div class="fila">
-      <div>
-        <label>Tamaño de la Empresa</label>
-        <select name="tamanoEmpresa">
-          <option value="">Seleccionar</option>
-          <option value="Micro">Micro</option>
-          <option value="Pequeña">Pequeña</option>
-          <option value="Mediana">Mediana</option>
-          <option value="Grande">Grande</option>
-        </select>
-      </div>
-      <div>
-        <label>Correo Corporativo</label>
-        <input type="email" name="correoCorporativo" placeholder="Ej: contacto@empresa.com">
-      </div>
+    <div>
+      <label>Correo Personal</label>
+      <input type="email" name="correo" placeholder="Ej: ejemplo@correo.com">
     </div>
+  </div>
 
-    <div class="fila">
-      <div>
-        <label>Teléfono Fijo</label>
-        <input type="text" name="telefonoFijo" placeholder="Ej: 6053856402">
-      </div>
-      <div>
-        <label>Página Web o Redes Sociales</label>
-        <input type="text" name="web" placeholder="Ej: www.empresa.com / @empresa">
-      </div>
+  <div class="fila">
+    <div>
+      <label>Teléfono Personal / Celular</label>
+      <!-- ⚠️ CAMBIO CLAVE: el JS busca name="telefono" -->
+      <input type="text" name="telefono" placeholder="Ej: 3122575674">
     </div>
+  </div>
 
-    <div class="fila">
-      <div>
-        <label>Ciudad</label>
-        <input type="text" name="ciudad" placeholder="Ej: Barranquilla">
-      </div>
-      <div>
-        <label>Departamento</label>
-        <input type="text" name="departamento" placeholder="Ej: Atlántico">
-      </div>
+  <!-- 🏢 DATOS EMPRESARIALES -->
+  <h3 class="subtitulo-form">Datos de la Empresa</h3>
+  <div class="fila">
+    <div>
+      <label>Nombre de la Empresa o Razón Social</label>
+      <input type="text" name="nombreEmpresa" placeholder="Ej: Copytrol S.A.S.">
     </div>
-
-    <div class="fila">
-      <div>
-        <label>País</label>
-        <input type="text" name="pais" placeholder="Ej: Colombia">
-      </div>
-      <div>
-        <label>Dirección</label>
-        <input type="text" name="direccion" placeholder="Ej: Calle 10 #25-60">
-      </div>
+    <div>
+      <label>NIT o Número Tributario</label>
+      <!-- ⚠️ CAMBIO CLAVE: el JS busca name="nit" -->
+      <input type="text" name="nit" placeholder="Ej: 901722045">
     </div>
+  </div>
 
-    <!-- ⚙️ INFORMACIÓN DE GESTIÓN -->
-    <h3 class="subtitulo-form">Información de Gestión</h3>
-    <div class="fila">
-      <div>
-        <label>Fecha de Ingreso</label>
-        <input type="date" name="fechaIngreso">
-      </div>
-      <div>
-        <label>Estado del Cliente</label>
-        <select name="estado">
-          <option value="">Seleccionar</option>
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
-          <option value="Pendiente">Pendiente</option>
-          <option value="En Seguimiento">En Seguimiento</option>
-        </select>
-      </div>
+  <div class="fila">
+    <div>
+      <label>Tipo de Empresa</label>
+      <select name="tipoEmpresa">
+        <option value="">Seleccionar</option>
+        <option value="Natural">Natural</option>
+        <option value="Jurídica">Jurídica</option>
+      </select>
     </div>
-
-    <div class="fila">
-      <div>
-        <label>Profesional o Responsable Asignado</label>
-        <input type="text" name="responsable" placeholder="Ej: Paul Rodríguez">
-      </div>
-      <div>
-        <label>Tipo de Servicio o Convenio</label>
-        <input type="text" name="tipoServicio" placeholder="Ej: Convenio Conecta">
-      </div>
+    <div>
+      <label>Sector o Actividad Económica</label>
+      <input type="text" name="sector" placeholder="Ej: Servicios de Salud">
     </div>
+  </div>
 
-    <div class="fila">
-      <div>
-        <label>Frecuencia de Contacto</label>
-        <select name="frecuencia">
-          <option value="">Seleccionar</option>
-          <option value="Mensual">Mensual</option>
-          <option value="Trimestral">Trimestral</option>
-          <option value="Semestral">Semestral</option>
-        </select>
-      </div>
-      <div>
-        <label>Nivel de Prioridad</label>
-        <select name="prioridad">
-          <option value="">Seleccionar</option>
-          <option value="Alta">Alta</option>
-          <option value="Media">Media</option>
-          <option value="Baja">Baja</option>
-        </select>
-      </div>
+  <div class="fila">
+    <div>
+      <label>Tamaño de la Empresa</label>
+      <select name="tamanoEmpresa">
+        <option value="">Seleccionar</option>
+        <option value="Micro">Micro</option>
+        <option value="Pequeña">Pequeña</option>
+        <option value="Mediana">Mediana</option>
+        <option value="Grande">Grande</option>
+      </select>
     </div>
-
-    <div class="fila">
-      <div>
-        <label>Observaciones</label>
-        <textarea name="observaciones" placeholder="Anotar comentarios o detalles importantes..." rows="3"></textarea>
-      </div>
+    <div>
+      <label>Correo Corporativo</label>
+      <input type="email" name="correoCorporativo" placeholder="Ej: contacto@empresa.com">
     </div>
+  </div>
 
-    <div class="botones">
-      <button type="button" class="registrar">Registrar</button>
-      <button type="button" class="actualizar">Actualizar</button>
+  <div class="fila">
+    <div>
+      <label>Teléfono Fijo</label>
+      <input type="text" name="telefonoFijo" placeholder="Ej: 6053856402">
     </div>
+    <div>
+      <label>Página Web o Redes Sociales</label>
+      <input type="text" name="web" placeholder="Ej: www.empresa.com / @empresa">
+    </div>
+  </div>
 
-  </form>
+  <div class="fila">
+    <div>
+      <label>Ciudad</label>
+      <input type="text" name="ciudad" placeholder="Ej: Barranquilla">
+    </div>
+    <div>
+      <label>Departamento</label>
+      <input type="text" name="departamento" placeholder="Ej: Atlántico">
+    </div>
+  </div>
+
+  <div class="fila">
+    <div>
+      <label>País</label>
+      <input type="text" name="pais" placeholder="Ej: Colombia">
+    </div>
+    <div>
+      <label>Dirección</label>
+      <input type="text" name="direccion" placeholder="Ej: Calle 10 #25-60">
+    </div>
+  </div>
+
+  <!-- ⚙️ INFORMACIÓN DE GESTIÓN -->
+  <h3 class="subtitulo-form">Información de Gestión</h3>
+  <div class="fila">
+    <div>
+      <label>Fecha de Ingreso</label>
+      <!-- ⚠️ CAMBIO CLAVE: el JS busca name="fechaIngreso" -->
+      <input type="date" name="fechaIngreso">
+    </div>
+    <div>
+      <label>Estado del Cliente</label>
+      <select name="estado">
+        <option value="">Seleccionar</option>
+        <option value="Activo">Activo</option>
+        <option value="Inactivo">Inactivo</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="En Seguimiento">En Seguimiento</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="fila">
+    <div>
+      <label>Profesional o Responsable Asignado</label>
+      <input type="text" name="responsable" placeholder="Ej: Paul Rodríguez">
+    </div>
+    <div>
+      <label>Tipo de Servicio o Convenio</label>
+      <input type="text" name="tipoServicio" placeholder="Ej: Convenio Conecta">
+    </div>
+  </div>
+
+  <div class="fila">
+    <div>
+      <label>Frecuencia de Contacto</label>
+      <select name="frecuencia">
+        <option value="">Seleccionar</option>
+        <option value="Mensual">Mensual</option>
+        <option value="Trimestral">Trimestral</option>
+        <option value="Semestral">Semestral</option>
+      </select>
+    </div>
+    <div>
+      <label>Nivel de Prioridad</label>
+      <select name="prioridad">
+        <option value="">Seleccionar</option>
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="fila">
+    <div>
+      <label>Observaciones</label>
+      <textarea name="observaciones" placeholder="Anotar comentarios o detalles importantes..." rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="botones">
+    <button type="button" class="registrar">Registrar</button>
+    <button type="button" class="actualizar">Actualizar</button>
+  </div>
+</form>
 </section>
 
         <!-- Datos Registrados -->
@@ -314,6 +316,7 @@
   <script type="module" src="js/clientes.js"></script>
 </body>
 </html>
+
 
 
 
